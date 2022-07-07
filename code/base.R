@@ -1,3 +1,4 @@
+
 # import packages
 library(tidyverse)
 library(lubridate)
@@ -24,8 +25,11 @@ crime_clean = crime_raw %>%
   mutate(month_reported = date(floor_date(date_reported, unit = 'month')))
 
 # aggregate
-crime_clean %>%
+crime_aggregated = crime_clean %>%
   group_by(month_reported, crime_description) %>%
   summarise(count = n_distinct(id)) %>%
   spread(crime_description, count, fill = 0) %>%
   rename(`MONTH REPORTED` = month_reported)
+
+# export
+write_csv(crime_aggregated, '5_crime_clean.csv')
