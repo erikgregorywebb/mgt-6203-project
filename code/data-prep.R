@@ -1,3 +1,4 @@
+
 library(tidyverse)
 library(lubridate)
 
@@ -51,7 +52,9 @@ unemployment_qtr = unemployment %>%
   mutate(cy_qtr = paste(year(month), quarter(month), sep = '-0')) %>%
   group_by(cy_qtr) %>% 
   summarise(labor_force = mean(labor_force), 
-            unemployment = mean(unemployment), unemployment_rate = mean(unemployment_rate))
+            unemployment = mean(unemployment), unemployment_rate = mean(unemployment_rate)) %>%
+  mutate(labor_force = round(labor_force, 0), unemployment = round(unemployment, 0),
+         unemployment_rate = round(unemployment_rate, 2))
 
 # quick plot, to validate
 unemployment %>%
@@ -77,36 +80,41 @@ glimpse(economic_raw)
 # preview
 economic_raw %>% 
   filter(is.null(cy_qtr) != TRUE) %>%
-  group_by(category, indicator) %>% count(sort = T) %>% View()
+  group_by(category, indicator) %>% count(sort = T)
 
 # summarize metrics 
 cpi = economic_raw %>% 
   filter(locality == 'Los Angeles Msa') %>%
   filter(indicator == 'Total All Items') %>%
-  select(cy_qtr, cpi = value)
+  select(cy_qtr, cpi = value) %>%
+  mutate(cpi = round(cpi, 1))
 
 taxable_sales = economic_raw %>% 
   filter(locality == 'Los Angeles City') %>%
   filter(indicator == 'Taxable Sales By Sector') %>%
-  group_by(cy_qtr) %>% summarise(taxable_sales = sum(value))
+  group_by(cy_qtr) %>% summarise(taxable_sales = sum(value)) %>%
+  mutate(taxable_sales = round(taxable_sales, 0))
 
 avg_annual_wage = economic_raw %>% 
   filter(locality == 'Los Angeles City') %>%
   filter(indicator == 'Average Annual Wage') %>%
   filter(council_district != 'City Total') %>%
-  group_by(cy_qtr) %>% summarise(avg_annual_wage = mean(value))
+  group_by(cy_qtr) %>% summarise(avg_annual_wage = mean(value)) %>%
+  mutate(avg_annual_wage = round(avg_annual_wage, 0))
 
 multi_family_permits = economic_raw %>% 
   filter(locality == 'Los Angeles City') %>%
   filter(indicator == 'Multi-family Permits') %>%
   filter(council_district != 'City Total') %>%
-  group_by(cy_qtr) %>% summarise(multi_family_permits = sum(value))
+  group_by(cy_qtr) %>% summarise(multi_family_permits = sum(value)) %>%
+  mutate(multi_family_permits = round(multi_family_permits, 0))
 
 single_family_permits = economic_raw %>% 
   filter(locality == 'Los Angeles City') %>%
   filter(indicator == 'Single-family Permits') %>%
   filter(council_district != 'City Total') %>%
-  group_by(cy_qtr) %>% summarise(single_family_permits = sum(value))
+  group_by(cy_qtr) %>% summarise(single_family_permits = sum(value)) %>%
+  mutate(single_family_permits = round(single_family_permits, 0))
 
 # join 
 joined = cpi %>%
@@ -120,6 +128,7 @@ joined = cpi %>%
 # reorder columns
 final = joined %>% select(cy_qtr, total_crime_count = crime_count, labor_force, unemployment, unemployment_rate,
          cpi, taxable_sales, avg_annual_wage, multi_family_permits, single_family_permits)
+glimpse(final)
 
 # export
 setwd("~/Downloads")
