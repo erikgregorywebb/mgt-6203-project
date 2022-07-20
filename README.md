@@ -1,24 +1,55 @@
 # MGT 6203 - Group Project
 
+## Data Sources
 
-## Datasets
+### Crime
 
-**(1) Crime Data**
+This dataset reflects incidents of crime in the City of Los Angeles. This data is transcribed from original crime reports that are typed on paper, provided by the Los Angeles Police Department.
 
-**(2) Economic Data**
+- [Source](https://data.lacity.org/Public-Safety/Crime-Data-from-2010-to-2019/63jg-8b9z) [2010 to 2019]
+- [Source](https://data.lacity.org/Public-Safety/Crime-Data-from-2020-to-Present/2nrs-mtv8) [2020 to Present]
 
-Comprehensive economic data for the City of Los Angeles. Prepared by Beacon Economics.
-- Source: [https://controllerdata.lacity.org/Statistics/City-of-Los-Angeles-Economic-Data/xtbr-xwes](https://controllerdata.lacity.org/Statistics/City-of-Los-Angeles-Economic-Data/xtbr-xwes)
-- Preview: [https://github.com/erikgregorywebb/mgt-6203-project/blob/main/data/2_economic_data.csv](https://github.com/erikgregorywebb/mgt-6203-project/blob/main/data/2_economic_data.csv)
+### Unemployment Rate
 
-**(3) Unemployment Data**
+These data come from the Current Population Survey (CPS), also known as the household survey. The unemployment rate is the unemployed percent of the civilian labor force [100 times (unemployed/civilian labor force)].
 
-The Local Area Unemployment Statistics (LAUS) program is a Federal-State cooperative effort in which monthly estimates of total employment and unemployment are prepared for approximately 7,300 areas, including counties, cities and metropolitan statistical areas.
-- Source: [https://data.edd.ca.gov/Labor-Force-and-Unemployment-Rates/Local-Area-Unemployment-Statistics-LAUS-Los-Angele/tiz9-jhxf](https://data.edd.ca.gov/Labor-Force-and-Unemployment-Rates/Local-Area-Unemployment-Statistics-LAUS-Los-Angele/tiz9-jhxf)
-- Preview: [https://github.com/erikgregorywebb/mgt-6203-project/blob/main/data/3_unemployment_statistics.csv](https://github.com/erikgregorywebb/mgt-6203-project/blob/main/data/3_unemployment_statistics.csv)
+- [Source](https://fred.stlouisfed.org/series/CALOSA7URN)
 
-**(4) Rent Data**
+### Home Price Index
 
-Data Provided by the American Community Survey, B25064
-- Source: [https://usc.data.socrata.com/Los-Angeles/Rent-Price-LA-/4a97-v5tx](https://usc.data.socrata.com/Los-Angeles/Rent-Price-LA-/4a97-v5tx)
-- Preview: [https://github.com/erikgregorywebb/mgt-6203-project/blob/main/data/4_rent_prices.csv](https://github.com/erikgregorywebb/mgt-6203-project/blob/main/data/4_rent_prices.csv)
+The Standard & Poor's CoreLogic Case–Shiller Home Price Indices are repeat-sales house price indices for the United States. This dataset is specific to Los Angeles.
+
+- [Source](https://fred.stlouisfed.org/series/LXXRSA)
+
+### Zillow Rent Index
+
+A smoothed measure of the typical observed market rate rent across a given region. ZORI is a repeat-rent index that is weighted to the rental housing stock to ensure representativeness across the entire market, not just those homes currently listed for-rent.
+
+- [Source](https://www.zillow.com/research/data/)
+
+### CPI, Transportation
+
+- [Source](https://www.bls.gov/cpi/data.htm)
+Series Id:	CUURA421SAT,CUUSA421SAT
+Series Title:	Transportation in Los Angeles-Riverside-Orange County, CA, all urban consumers, not seasonally adjusted]
+
+### CPI, 	Medical Care
+
+- [Source](https://www.bls.gov/cpi/data.htm)
+
+Series Id:	CUURA421SAM,CUUSA421SAM
+Series Title:	Medical care in Los Angeles-Riverside-Orange County, CA, all urban consumers, not seasonally adjusted
+
+### CPI, Food & Beverages
+
+- [Source](https://www.bls.gov/cpi/data.htm)
+
+Series Id:	CUURA421SAF,CUUSA421SAF
+Series Title:	Food and beverages in Los Angeles-Riverside-Orange County, CA, all urban consumers, not seasonally adjusted
+
+### CPI, Fuels & Utilities
+
+- [Source](https://www.bls.gov/cpi/data.htm)
+
+Series Id:	CUURA421SAH2,CUUSA421SAH2
+Series Title:	Fuels and utilities in Los Angeles-Riverside-Orange County, CA, all urban consumers, not seasonally adjusted
